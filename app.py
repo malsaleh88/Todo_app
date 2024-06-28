@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -15,6 +15,11 @@ db = client.todo_app
 @app.route('/')
 def hello_world():
     return 'Hello World! Connected to MongoDB!'
+
+
+@app.route('/index')
+def home():  # put application's code here
+    return render_template('index.html',name='PyCharm')
 
 if __name__ == '__main__':
     app.run()
